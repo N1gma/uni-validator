@@ -1,0 +1,42 @@
+{
+  "name": "uni-validator",
+  "version": "0.1.0",
+  "author": "n11",
+  "license": "ISC",
+  "description": "strong js validator",
+  "scripts": {
+    "start": "babel -d ./dist ./src -s && jsdoc ./src",
+    "watch": "babel --watch -d ./dist ./src -s"
+  },
+  "keywords": [
+    "uni-validator",
+    "uni validator",
+    "validator",
+    "js validator",
+    "validation",
+    "strong validation",
+    "js validation",
+    "custom validation",
+    "reg validation",
+    "regexp validation",
+    "nodejs validation",
+    "node validation"
+  ],
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/N1gma/uni-validator.git"
+  },
+  "homepage": "https://github.com/N1gma/uni-validator",
+  "bugs": {
+    "url": "https://github.com/N1gma/uni-validator/issues"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.22.1",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2016": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "jsdoc": "^3.4.3"
+  }
+}
