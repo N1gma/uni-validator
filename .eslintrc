@@ -1,0 +1,51 @@
+{
+    "env": {
+        "browser": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "root": true,
+    "extends": [
+        "airbnb-base",
+        "prettier"
+    ],
+    "rules": {
+        "import/prefer-default-export": 0,
+        "comma-dangle": [
+            1,
+            "never"
+        ],
+        "import/no-extraneous-dependencies": 0,
+        "import/no-unresolved": 0,
+        "import/extensions": 0,
+        "new-cap": 0,
+        "template-curly-spacing": [
+            2,
+            "always"
+        ],
+        "key-spacing": 0,
+        "one-var": 0,
+        "arrow-parens": 0,
+        "prefer-rest-params": 0,
+        "no-multi-spaces": 0,
+        "no-prototype-builtins": 0,
+        "consistent-return": "off",
+        "no-unused-vars": 0,
+        "class-methods-use-this": 0,
+        "linebreak-style": 0,
+        "semi": "error",
+        "eol-last": "error",
+        "space-in-parens": "error",
+        "brace-style": "error",
+        "no-trailing-spaces": "error",
+        "keyword-spacing": "error",
+        "object-curly-spacing": "error",
+        "indent": [
+            2,
+            4
+        ]
+    }
+}
