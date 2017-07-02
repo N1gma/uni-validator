@@ -1,4 +1,4 @@
-#uni-validator
+# uni-validator
 To install the stable version:
 ```
 npm install --save uni-validator
@@ -13,7 +13,7 @@ const validator = new Validator(); // instance with default rules
 const validator = new Validator(myRules); // or instance with custom rules 
 // gonna override default ones with same names (see link below)
 ```
-[About validation rules](#About validation rules)
+[About validation rules](#about-validation-rules)
 
 #### Validate single value 
 .validate(stringToValidate, [arrayOfRules](#About validation rules))
@@ -27,9 +27,9 @@ validator.validate('someValue', [{
   to: 'someValueee'
 }])
 ```
-######will return object below if validation fails for both rules:
-######for each rules which didnt passed validation equal pair of key-value will be created in results object
-######if one of rules  fail validation - ```valid: false``` otherwise ```valid: true```
+###### will return object below if validation fails for both rules:
+###### for each rules which didnt passed validation equal pair of key-value will be created in results object
+###### if one of rules  fail validation - ```valid: false``` otherwise ```valid: true```
 ```javascript
   results: {
      minLength: 'minimum of 10 characters',
@@ -37,7 +37,7 @@ validator.validate('someValue', [{
   },
   valid: false
 ```
-######otherwise if validation ended with success will be returned:
+###### otherwise if validation ended with success will be returned:
 ```javascript
   results: {},
   valid: true
@@ -70,7 +70,7 @@ validator.validateGroup([
      ]
   }])
 ```
-######returns
+###### returns
 ```javascript
 { 
   errorObjects: {
@@ -100,12 +100,12 @@ validator.addRule(
 //or
 validator.addRule(
   'myNewRule2',
-  val => { return val !== '2'},
+   val => val !== '2',
   'shouldn't be equal to 2'
 );
 ```
-######returns this
-###About validation rules
+###### returns this
+### About validation rules
 In order to use your new rules or old ones you should pass them in array as second argument of .validate or .validateGroup (for each instance to validate) method. Invocation of method will go though all rules and if a single rule will fail validation it will return process mareked as valid: false with messages from all rules failed during validation. You can pass em as objects with structure
 ```javascript
 [
