@@ -16,7 +16,7 @@ const validator = new Validator(myRules); // or instance with custom rules
 [About validation rules](#about-validation-rules)
 
 #### Validate single value 
-.validate(stringToValidate, [arrayOfRules](#About validation rules))
+.validate(stringToValidate, [arrayOfRules](#about-validation-rules))
 
 ```javascript
 validator.validate('someValue', [{
