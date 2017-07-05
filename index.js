@@ -1,2 +1,1 @@
-import Validator from './src'
-export default Validator;
+module.exports = require('./distribution/index');
