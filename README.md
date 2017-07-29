@@ -101,7 +101,7 @@ validator.addRule(
 validator.addRule(
   'myNewRule2',
    val => val !== '2',
-  'shouldn't be equal to 2'
+  "shouldn't be equal to 2"
 );
 ```
 ###### returns this
