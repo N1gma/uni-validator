@@ -11,7 +11,7 @@ class Validator {
     constructor(rules = {}) {
         this.rules = {
             ...importRules,
-            rules
+            ...rules
         };
     }
 

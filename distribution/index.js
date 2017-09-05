@@ -30,9 +30,7 @@ var Validator = function () {
 
         _classCallCheck(this, Validator);
 
-        this.rules = _extends({}, importRules, {
-            rules: rules
-        });
+        this.rules = _extends({}, importRules, rules);
     }
 
     /**
