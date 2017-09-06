@@ -15,6 +15,17 @@ class Validator {
         };
     }
 
+    chainValidation = (option, value) => {
+        const error = option.name
+            ? this.rules[option.name](value, option)
+            : this.rules[option](value);
+        if (error) {
+            this.buildResults(error);
+        } else if (option.next) {
+            this.chainValidation(option.next, value);
+        }
+    };
+
     /**
      * Provide validation to value param
      * @param {string} value - String to validate
@@ -27,15 +38,9 @@ class Validator {
             results: {},
             valid: true
         };
-        for (let i = 0; i < options.length; i += 1) {
-            const option = options[i];
-            const error = option.name
-                ? this.rules[option.name](value, option)
-                : this.rules[option](value);
-            if (error) {
-                this.buildResults(error);
-            }
-        }
+        options.forEach(option => {
+            this.chainValidation(option, value);
+        });
         return this.errorObject;
     }
 

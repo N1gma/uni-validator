@@ -89,6 +89,27 @@ validator.validateGroup([
   valid: false
 }
 ```
+#####IMPORTANT:
+Both examples above will run paralell validation. If you like to validate with some rule only if previous
+validation ended with success (for example you **want** to check if your value **equals** to another one only in case 
+ if this value **exist**) you should add **next** reference to rule:
+ ```javascript
+  // will run 'equals' check only if value 'someValue' isnt empty
+  // same for '.validateGroup' method
+  // you can chain 'next:' as many times as you want
+  validator.validate('someValue',
+             [{
+                 name: 'empty',
+                 next: {
+                     name: 'equals',
+                     to: 'someValueee'
+                 }
+             }, {
+                 name: 'minLength',
+                 len: 8
+             }])
+```
+
 #### Add custom validation rule
 .addRule(name, rule, errorMsg)
 ```javascript

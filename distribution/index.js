@@ -26,25 +26,38 @@ var importRules = _extends({}, _commonRules2.default);
 
 var Validator = function () {
     function Validator() {
+        var _this = this;
+
         var rules = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
         _classCallCheck(this, Validator);
 
+        this.chainValidation = function (option, value) {
+            var error = option.name ? _this.rules[option.name](value, option) : _this.rules[option](value);
+            if (error) {
+                _this.buildResults(error);
+            } else if (option.next) {
+                _this.chainValidation(option.next, value);
+            }
+        };
+
         this.rules = _extends({}, importRules, rules);
     }
 
-    /**
-     * Provide validation to value param
-     * @param {string} value - String to validate
-     * @param {Array} options - array of strings or objects(if  rule requires additional params) rules
-     * @return {{results: {}, valid: boolean}}
-     * @desc results is a composition of name - error message of rules which failed during validation process
-     */
-
-
     _createClass(Validator, [{
         key: 'validate',
+
+
+        /**
+         * Provide validation to value param
+         * @param {string} value - String to validate
+         * @param {Array} options - array of strings or objects(if  rule requires additional params) rules
+         * @return {{results: {}, valid: boolean}}
+         * @desc results is a composition of name - error message of rules which failed during validation process
+         */
         value: function validate() {
+            var _this2 = this;
+
             var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
             var options = arguments[1];
 
@@ -52,13 +65,9 @@ var Validator = function () {
                 results: {},
                 valid: true
             };
-            for (var i = 0; i < options.length; i += 1) {
-                var option = options[i];
-                var error = option.name ? this.rules[option.name](value, option) : this.rules[option](value);
-                if (error) {
-                    this.buildResults(error);
-                }
-            }
+            options.forEach(function (option) {
+                _this2.chainValidation(option, value);
+            });
             return this.errorObject;
         }
 
@@ -71,10 +80,10 @@ var Validator = function () {
     }, {
         key: 'validateGroup',
         value: function validateGroup(data) {
-            var _this = this;
+            var _this3 = this;
 
             var errorObjects = data.reduce(function (result, validationProps) {
-                return _extends({}, result, _defineProperty({}, validationProps.field || validationProps.data || 'no_value_provided', _this.validate(validationProps.data || '', validationProps.rules)));
+                return _extends({}, result, _defineProperty({}, validationProps.field || validationProps.data || 'no_value_provided', _this3.validate(validationProps.data || '', validationProps.rules)));
             }, {});
 
             var valid = Object.values(errorObjects).every(function (checkResult) {
@@ -86,17 +95,17 @@ var Validator = function () {
     }, {
         key: 'addRegExpRule',
         value: function addRegExpRule(name, rules, errorMsg) {
-            var _this2 = this;
+            var _this4 = this;
 
             this.rules[name] = function (val) {
                 if (Array.isArray(rules)) {
                     rules.forEach(function (rule) {
                         if (!rule.test(val)) {
-                            _this2.buildResults(_defineProperty({}, name, errorMsg));
+                            _this4.buildResults(_defineProperty({}, name, errorMsg));
                         }
                     });
                 } else if (!rules.test(val)) {
-                    _this2.buildResults(_defineProperty({}, name, errorMsg));
+                    _this4.buildResults(_defineProperty({}, name, errorMsg));
                 }
             };
         }
