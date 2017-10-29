@@ -89,7 +89,7 @@ validator.validateGroup([
   valid: false
 }
 ```
-#####IMPORTANT:
+##### IMPORTANT:
 Both examples above will run paralell validation. If you like to validate with some rule only if previous
 validation ended with success (for example you **want** to check if your value **equals** to another one only in case 
  if this value **exist**) you should add **next** reference to rule:
