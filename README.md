@@ -1,4 +1,7 @@
 # uni-validator
+
+[![NPM Link](https://img.shields.io/badge/npm-uni--validator-red.svg)](https://www.npmjs.com/package/uni-validator)
+
 To install the stable version:
 ```
 npm install --save uni-validator
